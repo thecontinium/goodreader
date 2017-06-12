@@ -49,7 +49,7 @@ on handle_url(args)
 	--display dialog "nvalt://" & thisFile
 	tell application "nvALT"
 		activate
-		open location "nvalt://find/" & thisFile
+		open location "nvalt://" & thisFile
 	end tell
 	return 1
 end handle_url
