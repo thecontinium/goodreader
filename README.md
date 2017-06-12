@@ -23,6 +23,7 @@ Make url scheme from goodreader work on Mac
 1. [Map a custom protocol](https://stackoverflow.com/questions/471581/how-to-map-a-custom-protocol-to-an-application-on-the-mac/3704396#3704396)
 2. [LinCastor](https://onflapp.wordpress.com/lincastor/)
 
+GoodReader
 ``` applescript
 on handle_url(args)
 	-- display dialog "handle url: " & |URL| of args
@@ -33,6 +34,22 @@ on handle_url(args)
 	tell application "Finder"
 		--open POSIX file "/mnt/mini/Documents/one. file.pdf"
 		open myfile
+	end tell
+	return 1
+end handle_url
+```
+OneWriter
+``` applescript
+on handle_url(args)
+	set oldDelims to AppleScript's text item delimiters
+	set AppleScript's text item delimiters to "/"
+	set thisFile to item -1 of the text items of |URL_QUERY_PATH| of args
+	set AppleScript's text item delimiters to "."
+	set thisFile to item 1 of the text items of thisFile
+	--display dialog "nvalt://" & thisFile
+	tell application "nvALT"
+		activate
+		open location "nvalt://find/" & thisFile
 	end tell
 	return 1
 end handle_url
