@@ -54,7 +54,7 @@ on handle_url(args)
 	return 1
 end handle_url
 ```
-
+Mindnode
 ``` applescript
 on handle_url(args)
 	set iCloudFolder to |URL_QUERY_FOLDER| of args
