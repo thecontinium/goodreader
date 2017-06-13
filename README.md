@@ -54,4 +54,20 @@ on handle_url(args)
 	return 1
 end handle_url
 ```
+
+``` applescript
+on handle_url(args)
+	set iCloudFolder to |URL_QUERY_FOLDER| of args
+	set iCloudName to |URL_QUERY_NAME| of args & ".mindnode"
+	set pathToiCloud to (path to library folder from user domain as rich text) & "Mobile Documents:W6L39UYL6Z~com~mindnode~"
+	tell application "MindNode"
+		activate
+		set theApp to its name
+		set iCloudFile to (pathToiCloud & theApp & ":Documents:" & iCloudFolder & ":" & iCloudName)
+		--display dialog iCloudFile
+		open file iCloudFile
+	end tell
+	return 1
+end handle_url
+```
 3. [RCDefaultApp](http://www.rubicode.com/Software/RCDefaultApp/)
